@@ -51,6 +51,6 @@ public class EmailService {
     }
 
     public List<Email> getAllEmails() {
-        return emailRepository.findAll();
+        return emailRepository.findAllByOrderByCreatedOnDesc();
     }
 }
