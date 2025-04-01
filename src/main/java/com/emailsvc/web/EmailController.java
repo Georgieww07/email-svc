@@ -5,6 +5,7 @@ import com.emailsvc.service.EmailService;
 import com.emailsvc.web.dto.EmailRequest;
 import com.emailsvc.web.dto.EmailResponse;
 import com.emailsvc.web.mapper.DtoMapper;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class EmailController {
     }
 
     @PostMapping
-    public ResponseEntity<EmailResponse> sendEmail(@RequestBody EmailRequest emailRequest) {
+    public ResponseEntity<EmailResponse> sendEmail(@RequestBody @Valid EmailRequest emailRequest) {
 
         Email email = emailService.sendEmail(emailRequest);
 
