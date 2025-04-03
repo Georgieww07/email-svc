@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/emails")
 public class EmailController {
+
     private final EmailService emailService;
 
     @Autowired
@@ -27,7 +28,6 @@ public class EmailController {
     public ResponseEntity<EmailResponse> sendEmail(@RequestBody @Valid EmailRequest emailRequest) {
 
         Email email = emailService.sendEmail(emailRequest);
-
         EmailResponse emailResponse = DtoMapper.fromEmail(email);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(emailResponse);
@@ -37,10 +37,8 @@ public class EmailController {
     public ResponseEntity<List<EmailResponse>> getAllEmails() {
 
         List<Email> allEmails = emailService.getAllEmails();
-
         List<EmailResponse> response = allEmails.stream().map(DtoMapper::fromEmail).toList();
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
 }
