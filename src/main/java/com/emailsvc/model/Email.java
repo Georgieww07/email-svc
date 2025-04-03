@@ -14,6 +14,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "emails")
 public class Email {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
