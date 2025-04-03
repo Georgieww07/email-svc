@@ -16,6 +16,7 @@ import java.util.List;
 @Slf4j
 @Service
 public class EmailService {
+
     private final EmailRepository emailRepository;
     private final MailSender mailSender;
 
